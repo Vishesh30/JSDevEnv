@@ -4,17 +4,27 @@
   "description": "JavaScript development environment",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel  open:src lint:watch test:watch",
+    "start": "npm-run-all --parallel  open:src lint:watch test:watch start-mockapi",
     "open:src": "babel-node buildScripts/srcServer.js",
-    "lint":"esw webpack.config.* src buildScripts --color",
-    "lint:watch":"npm run lint -- --watch",
+    "lint": "esw webpack.config.* src buildScripts --color",
+    "lint:watch": "npm run lint -- --watch",
     "security-checks": "npm audit --audit-level high",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
-    "test:watch":"npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data":"babel-node buildScripts/generateMockData.js",
+    "prestart-mockapi":"npm run generate-mock-data",
+    "start-mockapi":"json-server --watch src/api/db.json --port 3001",
+    "clean-dist": "rimraf ./dist && mkdir dist",
+    "prebuild": "npm-run-all clean-dist test lint",
+    "build": "babel-node buildScripts/build.js",
+    "postbuild": "babel-node buildScripts/distServer.js",
+    "deploy":"surge ./dist"
   },
   "author": "Vishesh Agrawal",
   "license": "",
-  "dependencies": {},
+  "dependencies": {
+    "whatwg-fetch": "1.0.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.17.0",

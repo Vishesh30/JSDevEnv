@@ -12,11 +12,11 @@ describe('First test Function',() => {
 
 //Below is sample test using JSDOM
 describe('index.html',() => {
-  it('should say hello node', () =>{
+  it('should have h1 for users', () =>{
       const index = fs.readFileSync('./src/index.html',"utf-8");
       jsdom.env(index,(err, window) => {
         const h1 = window.document.getElementsByTagName('h1')[0];
-        expect(h1.innerHTML).to.equal("Hellooooooo Node..!!");
+        expect(h1.innerHTML).to.equal("Users");
         window.close();
       });
   });

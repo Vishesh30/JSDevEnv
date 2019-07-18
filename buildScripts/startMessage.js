@@ -1,4 +1,4 @@
 //  var chalk = require('chalk'); /// library used to color the text
  import chalk from 'chalk'
 
-console.log(chalk.green("Starting the application in Dev Mode"));
+console.log(chalk.green("Starting the application in Dev Mode")); // eslint-disable-line no-console
