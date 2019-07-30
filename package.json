@@ -11,14 +11,14 @@
     "security-checks": "npm audit --audit-level high",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch",
-    "generate-mock-data":"babel-node buildScripts/generateMockData.js",
-    "prestart-mockapi":"npm run generate-mock-data",
-    "start-mockapi":"json-server --watch src/api/db.json --port 3001",
+    "generate-mock-data": "babel-node buildScripts/generateMockData.js",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001",
     "clean-dist": "rimraf ./dist && mkdir dist",
     "prebuild": "npm-run-all clean-dist test lint",
     "build": "babel-node buildScripts/build.js",
     "postbuild": "babel-node buildScripts/distServer.js",
-    "deploy":"surge ./dist"
+    "deploy": "surge ./dist"
   },
   "author": "Vishesh Agrawal",
   "license": "",

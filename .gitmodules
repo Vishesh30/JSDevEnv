@@ -1,0 +1,4 @@
+[submodule "JSDevEnvApi"]
+	path = JSDevEnvApi
+	url = https://github.com/Vishesh30/JSDevEnvApi.git
+	branch = master
